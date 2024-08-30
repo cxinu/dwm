@@ -5,10 +5,10 @@
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int snap      = 5;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Fira Code:size=10", "Symbols Nerd Font Mono:size=9", "monospace:size=9", }; // "FiraCode:size=12" };
+static const char *fonts[]          = { "Fira Code:size=9", "Symbols Nerd Font Mono:size=8", "monospace:size=9", }; // "FiraCode:size=12" };
 static const char dmenufont[]       = "monospace:size=9";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -20,7 +20,7 @@ static const char col_cyan[]        = "#005577";
 static const char col_white[]       = "#ffffff";
 static const char col_primary[]	    = "#687ec1";
 static const char col_dark1[]       = "#1a1b1d";
-static const char col_dark2[]       = "#202122";
+static const char col_dark2[]       = "#303133";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -84,12 +84,15 @@ static const char *upbright[] = { "xbacklight", "-inc", "10", NULL };
 static const char *downbright[] = { "xbacklight", "-dec", "10", NULL };
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
+	/* modifier                     key        function         argument */
 	{ 0,				            XK_F6,	   spawn,	        {.v = upbright } },
 	{ 0,				            XK_F5,	   spawn,	        {.v = downbright } },
 	{ 0,				            XK_F3,     spawn,	        {.v = upvol } },
 	{ 0,				            XK_F2,	   spawn,	        {.v = downvol } },
 	{ 0,				            XK_F1,	   spawn,	        {.v = mutevol } },
+    { Mod1Mask|ControlMask,         XK_Up,     spawn,           SHCMD("playerctl play-pause") },
+    { Mod1Mask|ControlMask,         XK_Right,  spawn,           SHCMD("playerctl next") },
+    { Mod1Mask|ControlMask,         XK_Left,   spawn,           SHCMD("playerctl previous") },
 	{ MODKEY|ShiftMask, 		    XK_s,	   spawn,  	        SHCMD(SCREENSHOT_CMD) },
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = code } },
