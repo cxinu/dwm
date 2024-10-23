@@ -82,8 +82,7 @@ typedef struct {
 	const Arg arg;
 } Button;
 
-typedef struct Monitor Monitor;
-typedef struct Client Client;
+typedef struct Monitor Monitor; typedef struct Client Client;
 struct Client {
 	char name[256];
 	float mina, maxa;
